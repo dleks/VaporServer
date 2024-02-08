@@ -1,4 +1,5 @@
 import Fluent
+import Vapor
 
 struct CreateTodo: AsyncMigration {
     func prepare(on database: Database) async throws {
@@ -7,8 +8,9 @@ struct CreateTodo: AsyncMigration {
             .field("title", .string, .required)
             .create()
     }
-
+    
     func revert(on database: Database) async throws {
-        try await database.schema("todos").delete()
+        try await database.schema("todos")
+            .delete()
     }
 }

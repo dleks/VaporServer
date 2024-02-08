@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "tochka_vapor",
+    name: "VaporServer",
     platforms: [
        .macOS(.v13)
     ],
@@ -15,6 +15,7 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent-sqlite-driver.git", from: "4.0.0"),
         // 🍃 An expressive, performant, and extensible templating language built for Swift.
         .package(url: "https://github.com/vapor/leaf.git", from: "4.2.4"),
+        .package(url: "https://github.com/vapor/jwt.git", from: "4.0.0"),
     ],
     targets: [
         .executableTarget(
@@ -24,6 +25,7 @@ let package = Package(
                 .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver"),
                 .product(name: "Leaf", package: "leaf"),
                 .product(name: "Vapor", package: "vapor"),
+                .product(name: "JWT", package: "jwt")
             ]
         ),
         .testTarget(name: "AppTests", dependencies: [
